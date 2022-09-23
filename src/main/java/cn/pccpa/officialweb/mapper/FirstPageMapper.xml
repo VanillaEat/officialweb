@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.springboot01.mapper2.FirstPageMapper">
+    <select id="getAll" resultType="com.example.springboot01.bean.FirstPage">
+
+        select distinct dbref.id       as "id",
+                        db_displayname as "db_displayname",
+                        db_realname    as "db_realname",
+                        db_host        as "db_host",
+                        db_expired     as "db_expired",
+                        db_createdate  as "db_createdate",
+                        task_begintime as "task_begintime",
+                        task_endtime   as "task_endtime",
+                        is_finished    as "is_finished",
+                        attfile_path   as "attfile_path"
+        from bigdp.dbref
+                 left outer join attfile a on dbref.id = a.dbref_id
+
+
+    </select>
+
+
+</mapper>
